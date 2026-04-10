@@ -1,0 +1,101 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="404 — Page not found | Orca Blog"
+  description="The page you're looking for doesn't exist."
+>
+  <main class="not-found">
+    <div class="not-found-content">
+      <span class="code">404</span>
+      <h1>Page not found</h1>
+      <p class="message">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="back-link">Back to home</a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .not-found {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .not-found-content {
+    transition:
+      opacity 0.8s var(--orca-ease-out),
+      transform 0.8s var(--orca-ease-out);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+
+  .code {
+    display: block;
+    font-family: var(--orca-font-mono);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 600;
+    letter-spacing: -4px;
+    line-height: 1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--orca-signal), var(--orca-current));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h1 {
+    font-size: var(--orca-text-section);
+    font-weight: 800;
+    color: var(--orca-breach);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    text-wrap: balance;
+  }
+
+  .message {
+    font-size: var(--orca-text-body);
+    color: var(--orca-mist);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--orca-font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--orca-abyss);
+    background: var(--orca-signal);
+    padding: 12px 28px;
+    border-radius: var(--orca-radius-md);
+    text-decoration: none;
+    transition:
+      background 0.2s var(--orca-ease-out),
+      transform 0.2s var(--orca-ease-out);
+  }
+
+  .back-link:hover {
+    background: color-mix(in oklch, var(--orca-signal) 80%, white);
+    transform: translateY(-1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .not-found-content {
+      transition: none;
+    }
+
+    .back-link {
+      transition: none;
+    }
+  }
+</style>
